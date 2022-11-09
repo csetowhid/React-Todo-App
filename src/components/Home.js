@@ -1,26 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Todos } from './Todos'
 import style from './home.module.css'
 import { Form } from './Form'
+import { v4 as uuidv4 } from 'uuid';
 
 const Home = () => {
-    const dummyTodos = [
-        {
-            id : 1,
-            title : 'Title 1',
-            description : 'Description 1'
-        },
-        {
-            id : 2,
-            title : 'Title 2',
-            description : 'Description 2'
-        }
-    ]
+    const [todos, setTodos] = useState([]);
+
+    const handleAddTodo = (todo) => {
+        setTodos((prevTodos) =>{
+            return [...prevTodos, {id: uuidv4(), todo}]
+        })
+    }
   return (
     <div className={style.container}>
         <h1 style={{ color:"white" }}>Todo App</h1>
-        <Form />
-        <Todos todos={dummyTodos} />
+        <Form onAddTodo={handleAddTodo} />
+        <Todos todos={todos} />
     </div>
   )
 }
