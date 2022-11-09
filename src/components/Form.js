@@ -11,7 +11,7 @@ export const Form = (props) => {
     const handleChange = (event) => {
         const name  = event.target.name;
         setTodo((oldTodo) => {
-            return {...oldTodo, [name] : event.target.value}
+            return {...oldTodo, [name]: event.target.value}
         })
     }
 
@@ -28,8 +28,8 @@ export const Form = (props) => {
             <input type='text' id="title" name="title" value={title} onChange={handleChange} />
         </div>
         <div className={style['form-field']}>
-            <label htmlFor='title'>Description: </label>
-            <textarea type="text" id="textarea" name="textarea" value={description} onChange={handleChange} />
+            <label htmlFor='description'>Description: </label>
+            <textarea type="text" id="description" name="description" value={description} onChange={handleChange} />
         </div>
         <button type='submit'>Add Todo</button>
     </form>
