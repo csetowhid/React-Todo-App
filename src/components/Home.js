@@ -12,11 +12,18 @@ const Home = () => {
             return [...prevTodos, {id: uuidv4(), todo}]
         })
     }
+    const handleRemoveTodo = (id) => {
+      setTodos((prevTodos) => {
+        const filterredTodos = prevTodos.filter((todo) => todo.id !== id)
+        return filterredTodos;
+      });
+    }
+
   return (
     <div className={style.container}>
         <h1 style={{ color:"white" }}>Todo App</h1>
         <Form onAddTodo={handleAddTodo} />
-        <Todos todos={todos} />
+        <Todos todos={todos} onRemoveTodo = {handleRemoveTodo} />
     </div>
   )
 }

@@ -2,10 +2,13 @@ import React from 'react'
 import style from './todo.module.css'
 
 export const Todo = (props) => {
-    const {title,description, id} = props.todo;
+    const {title,description} = props.todo;
+    const {id} = props;
+
     const handleClick = (id) => {
-      alert(id);
+      props.onRemoveTodo(id);
     }
+
   return (
     <article className={style.todo}>
         <div>
